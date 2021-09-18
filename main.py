@@ -8,8 +8,10 @@ from config import *
 import re
 import numpy as np
 from settings import settings
+import music
 
-intents = discord.Intents.default()
+
+intents = discord.Intents.all()
 intents.members = True
 client = commands.Bot(command_prefix='!!', intents=intents)
 author = client.get_user(int())
@@ -35,7 +37,7 @@ async def on_message(message):
         await message.reply('Я с Артемами не разговариваю')
     elif random.choice(np.arange(0, 100)) <= 7:
         await message.reply('Именно ТЫ получаешь возможность быть посланным нахуй! До связи.')
-        await message.reply('CheckaBot покинул чат.')
+        await message.channel.send('CheckaBot покинул чат.')
         return
     if re.findall(r'([Уу][Кк][Рр][АаОо][Ии][Нн])|([Uu][Kk][Rr][Aa][Ii][Nn][Ee])', message.content):
         await message.reply('Героям слава!')
@@ -44,7 +46,7 @@ async def on_message(message):
     for word in message.content.lower().split():
         if word in bad_words:
             await message.reply('Без негатива.')
-        if re.findall(r'([Аа][Рр][Тт][ЕеЁё][Мм])| ([Тт][ЕеЁё][Мм][Аа])'):
+        if re.findall(r'([Аа][Рр][Тт][ЕеЁё][Мм])| ([Тт][ЕеЁё][Мм][Аа])', message.content):
             await message.reply('Господи, как можно было человека назвать ЭТИМ именем???')
 
 
@@ -103,4 +105,5 @@ async def compliment(ctx, member: discord.Member = 0):
 
 
 # connecting bot to the server via token
+client.add_cog(music.Music(client))
 client.run(settings['token'])
