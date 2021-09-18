@@ -7,6 +7,7 @@ from discord.ext import commands, tasks
 from config import *
 import re
 import numpy as np
+from settings import settings
 
 intents = discord.Intents.default()
 intents.members = True

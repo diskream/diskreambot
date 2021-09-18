@@ -1,9 +1,3 @@
-settings = {
-    'token': 'ODI1MjgwMTQ5OTU2MDY3MzI4.YF7oCA.KJ6uv_lU8gQgJhfOSxbwrTr2yDw',
-    'prefix': '!!',
-    'CliendID': 825280149956067328
-}
-
 insult_list = [
     'иди нахуй!',
     'ты просто коммунарский пидор...',
